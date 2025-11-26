@@ -120,7 +120,7 @@ Esta información se encuentra en la carpeta /docs. Ahi se puede encontrar el tr
 ## Opción 1: Cargar el archivo .pkt directamente
 1. Clona este repositorio:
 ```bash
-git clone https://github.com/tu-usuario/CENFONET.git
+git clone https://github.com/FabianVargasH/CENFONET---Proyecto-de-Red-WAN-Empresarial.git
 cd CENFONET
 ```
 2. Abre Cisco Packet Tracer
@@ -130,6 +130,98 @@ File → Open → packet-tracer/CENFONET_Topology.pkt
 ```
 4. Listo, ya tiene la red lista para pruebas
 ---
+
+## Opción 2: Configurar desde cero
+Si desea aprender configurando manualmente:
+### Paso 1: Crear la topología física
+
+1. Abre Packet Tracer
+2. Agrega 4 routers Cisco 1941
+3. Agrega 4 switches Cisco 2960-24TT
+4. Agrega 8 PCs (2 por cada LAN)
+
+### Paso 2: Conectar los dispositivos
+
+- Conexiones LAN (Cable Copper Straight-Through):
+
+  - Cada router (puerto G0/0) → Switch correspondiente
+  - Cada switch → 2 PCs
+
+- Conexiones WAN (Cable Fiber):
+
+  - RT_TercerPiso G0/1/0 ↔ RT_Auditorio G0/1/0
+  - RT_TercerPiso G0/0/0 ↔ RT_SegundoPiso G0/1/0
+  - RT_Auditorio G0/0/0 ↔ RT_PrimerPiso G0/1/0
+  - RT_SegundoPiso G0/0/0 ↔ RT_PrimerPiso G0/0/0
+
+### Paso 3: Configurar los dispositivos
+
+Todo el contenido de los scripts, configuraciones de la IP de las PC, está en la carpeta de /docs
+
+---
+
+# Configuración de Dispositivos
+
+## Credenciales de Acceso
+
+- Routers y Switches:
+  - Enable Secret: CLASS12345
+  - Console Password: CISCO12345
+  - VTY Password: CISCO12345
+  - SSH Username: ADMIN
+  - SSH Password: ADMIN12345
+
+- Switches (adicional):
+
+  - Username: Admin
+  - Password: Admin12345
+
+---
+
+#  Pruebas de Conectividad
+
+### Pruebas Básicas
+1. Conectividad local (misma LAN)
+
+```cisco
+PC0> ping 172.16.1.129    # Gateway
+PC0> ping 172.16.1.179    # Otro host en misma LAN
+```
+2. Conectividad WAN (entre LANs)
+```cisco
+PC0> ping 172.16.1.2      # PC en Auditorio
+PC0> ping 172.16.1.194    # PC en Primer Piso
+PC0> ping 172.16.1.226    # PC en Segundo Piso
+```
+3. Trazar ruta
+```cisco
+PC0> tracert 172.16.1.226
+```
+
+### Resultados Esperados
+#### Todos los pings deben ser exitosos con:
+
+- Reply from [IP]: bytes=32
+- Time: <10ms (LAN) o <50ms (WAN)
+- TTL: 128 (hosts) o 254-126 (a través de routers)
+- Success rate: 100% (5/5)
+
+#### Si hay fallas:
+
+- Verificar configuración de IPs
+- Verificar estado de interfaces (show ip interface brief)
+- Verificar rutas estáticas (show ip route)
+- Revisar cables físicos en Packet Tracer
+---
+
+# Documentación Técnica
+
+Como ya fue mencionado, toda la documentación técnica detallada se encuentra en la carpeta docs/:
+
+- Tablas de Subneteo: Direccionamiento completo
+- Rutas Estáticas: Todas las rutas configuradas
+- Configuración de PCs: IPs de hosts
+- Scripts de configuración
 
 # Limitaciones Conocidas
 
@@ -153,15 +245,21 @@ File → Open → packet-tracer/CENFONET_Topology.pkt
 ## Proyecto CENFONET
 
 Curso: Fundamentos de Redes
+
 Institución: UCENFOTEC
-Año: 2024
-Instructor: [Nombre del profesor]
+
+Año: 2025
+
+Instructor: Marco Ney Jiménez Quesada
 
 ## Desarrollado por:
 
 Fabián Vargas Hidalgo
+
 David Rivera Valladares
+
 Correo: fabianvh2506@gmail.com
+
 GitHub: FabianVargasH
 
 ---
@@ -176,6 +274,8 @@ GitHub: FabianVargasH
 - [x] Documentación técnica
 - [x] Análisis de costos
 
+Última actualización: Noviembre 2025
+
 ---
 
 # Agradecimientos
@@ -186,3 +286,7 @@ GitHub: FabianVargasH
 - Compañeros de clase por las sesiones de estudio y colaboración
 
 ---
+
+# Licencia
+
+Este proyecto contiene una licencia, favor revisarla y tomarla en cuenta
