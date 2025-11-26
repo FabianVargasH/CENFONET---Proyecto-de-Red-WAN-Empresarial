@@ -3,7 +3,7 @@
 
 <img width="284" height="78" alt="Imagen para markdown" src="https://github.com/user-attachments/assets/66e32529-6cec-4cac-823d-dbd5145a9152" />
 <img width="286" height="99" alt="Imagen Cisco para markdown" src="https://github.com/user-attachments/assets/0e4fa8a1-34e5-44de-92df-4a3ae18ff419" />
-<img width="289" height="46" alt="Imagen MIT markdown" src="https://github.com/user-attachments/assets/ffed0d9f-1048-44b8-89ad-5b480ea479aa" />
+<img width="249" height="46" alt="Imagen MIT markdown" src="https://github.com/user-attachments/assets/ffed0d9f-1048-44b8-89ad-5b480ea479aa" />
 
 # Descripción del Proyecto
 CENFONET es un proyecto académico de diseño e implementación de una red WAN (Wide Area Network) empresarial desarrollado como parte del curso de Fundamentos de Redes en UCENFOTEC.
