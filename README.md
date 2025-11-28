@@ -225,13 +225,6 @@ Como ya fue mencionado, toda la documentación técnica detallada se encuentra e
 
 # Limitaciones Conocidas
 
-## Limitaciones Técnicas
-
-- No hay failover automático: Con rutas estáticas básicas, si un enlace falla, se requiere intervención manual para activar rutas alternativas.
-- Balanceo de carga impredecible: Con múltiples rutas estáticas de igual métrica, el router puede alternar entre ellas de forma no determinística.
-- Escalabilidad de configuración: Agregar nuevas sedes requiere actualizar rutas estáticas en TODOS los routers manualmente.
-- Sin QoS implementado: No hay priorización de tráfico crítico sobre tráfico de menor importancia.
-
 ## Limitaciones del Simulador
 
 - Packet Tracer no simula 100% de funcionalidades: Algunas características avanzadas de IOS no están disponibles.
